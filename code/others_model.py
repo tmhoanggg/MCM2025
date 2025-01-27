@@ -21,8 +21,6 @@ target_variable = 'Bronze'
 year = 2020
 df_train = df[df['Year'] < year]
 df_test = df[df['Year'] >= year]
-X_train, y_train = df_train.drop(columns=['Rank', 'Gold', 'Silver', 'Bronze', 'Total']), df_train[target_variable]
-X_test, y_test = df_test.drop(columns=['Rank', 'Gold', 'Silver', 'Bronze', 'Total']), df_test[target_variable]
 
 
 # Đảm bảo dataframe có cột 'ds' và 'y'
@@ -31,6 +29,7 @@ df_train['y'] = df_train[target_variable]  # Là cột bạn muốn dự đoán
 df_test = df_test.drop(columns=['Rank', 'Gold', 'Silver', 'Bronze', 'Total'])
 df_test['ds'] = pd.to_datetime(df_test['Year'], format='%Y')  # Chuyển đổi cột 'Year' thành cột 'ds'
 #df_test['y'] = df_test[target_variable]  # Là cột bạn muốn dự đoán
+
 
 # Initialize the Prophet model
 model = Prophet(
@@ -53,7 +52,7 @@ regressors = df_train.drop(columns=['y', 'ds', 'Year', 'Rank', 'Gold', 'Silver',
 for regressor in regressors:
     model.add_regressor(regressor)
 
-
+# Drop cột Year trước khi train
 df_train = df_train.drop(columns=['Year'])
 df_test = df_test.drop(columns=['Year'])
 
