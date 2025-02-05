@@ -8,6 +8,7 @@ This study focuses on using the __Prophet__ model to predict the medal table for
 ![Our Framework](figures/framework.png)
 
 ## Repository Structure
+'''
 MCM2025/
 ├── code/
 │ ├── insight
@@ -20,6 +21,7 @@ MCM2025/
 ├── 2025_MCM_Problem_C.pdf # Problem description 
 ├── 2526908.pdf # Our paper for the problem
 └── README.md
+'''
 
 ## Projection for the medal table
 
